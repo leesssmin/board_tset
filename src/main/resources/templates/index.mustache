@@ -1,0 +1,46 @@
+{{> layout/header}}
+
+<div class="container p-5">
+
+    {{#boardList}}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h4 class="card-title mb-3">{{title}}</h4>
+                <img src="https://picsum.photos/id/{{Id}}/500/150" alt="이미지" style="width: 100%; height: auto;">
+                <p class="card-text" style="font-size: 1.3rem; font-weight: bold;">{{content}}</p>
+                <p class="text-muted">작성자: {{username}}</p>
+                <p class="text-muted">작성일: {{formattedCreatedAt}}</p>
+                <a href="/detail/{{id}}" class="btn btn-success mt-3">상세보기</a>
+
+            </div>
+        </div>
+    {{/boardList}}
+
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+
+            {{#currentPageIsNotFirst}}
+                <li class="page-item">
+                    <a class="page-link" href="/?page={{prevPage}}">이전</a>
+                </li>
+            {{/currentPageIsNotFirst}}
+
+            {{#pageNumbers}}
+                <li class="page-item {{#isCurrent}}active{{/isCurrent}}">
+                    <a class="page-link" href="/?page={{number}}">{{displayNumber}}</a>
+                </li>
+            {{/pageNumbers}}
+
+            {{#currentPageIsNotLast}}
+                <li class="page-item">
+                    <a class="page-link" href="/?page={{nextPage}}">다음</a>
+                </li>
+            {{/currentPageIsNotLast}}
+
+        </ul>
+    </nav>
+</div>
+
+
+
+{{> layout/footer}}

@@ -1,0 +1,29 @@
+{{> layout/header}}
+
+<div class="container mt-5" style="max-width: 700px;">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="card-title mb-3">{{board.title}}</h2>
+            <hr />
+            <p class="card-text" style="white-space: pre-wrap;">{{board.content}}</p>
+            <hr />
+            <div class="mb-3 text-muted d-flex justify-content-between">
+                <div>작성자: {{board.username}}</div>
+                <div>작성일: {{board.createdAt}}</div>
+            </div>
+
+            <!-- 버튼 영역 -->
+            <div class="d-flex justify-content-between mt-4">
+                <div class="btn-group" role="group">
+                    <a href="/board/edit/{{board.id}}" class="btn btn-outline-success">✏️ 수정</a>
+                    <form action="/board/delete/{{board.id}}" method="post" onsubmit="return confirm('정말 삭제하시겠습니까?');" style="display:inline;">
+                        <button type="submit" class="btn btn-outline-danger">🗑 삭제</button>
+                    </form>
+                </div>
+                <a href="/" class="btn btn-outline-secondary">← 목록으로</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{> layout/footer}}
